@@ -1,0 +1,291 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600;900&display=swap");
+
+:root {
+  --primary-color: #1d3365;
+  --primary-colorDar: #0c1e46a0;
+  --primary-colorOp: #1d336581;
+  --secondary-color: #b2caff;
+  --color3: #d5e2ff;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--primary-color);
+  position: relative;
+  height: 100vh;
+}
+
+.wrapper {
+  margin: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 265px);
+  gap: 15px;
+}
+
+.wrapper li {
+  background-color: var(--secondary-color);
+  list-style: none;
+  height: 250px;
+  border-radius: 5px;
+  padding: 15px 20px 20px;
+}
+.wrapper .note {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.add-box {
+  opacity: 0.5;
+  cursor: pointer;
+}
+.add-box,
+.icon,
+.bottom-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.add-box .icon {
+  height: 78px;
+  width: 78px;
+  border-radius: 50%;
+  border: 2px dashed var(--primary-color);
+  font-size: 40px;
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+.add-box p {
+  font-weight: 500;
+  margin-top: 20px;
+  color: var(--primary-color);
+}
+
+.note p {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.note span {
+  display: block;
+  font-size: 16px;
+  color: var(--primary-color);
+  margin-top: 5px;
+}
+
+.note .bottom-content {
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 10px;
+  border-top: 1px solid var(--primary-colorOp);
+}
+
+.bottom-content span {
+  color: var(--primary-colorDar);
+  font-size: 14px;
+}
+
+.bottom-content .settings span {
+  cursor: pointer;
+  font-size: 15px;
+  color: var(--primary-colorDar);
+}
+
+.settings {
+  position: relative;
+}
+
+.settings .menu {
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.267);
+  position: absolute;
+  bottom: 0;
+  padding: 5px 0;
+  border-radius: 4px;
+  right: -4px;
+  background-color: var(--secondary-color);
+  transform: scale(0);
+  transform-origin: bottom right;
+  transition: transform 0.2s ease;
+  color: var(--primary-color);
+}
+
+.settings.show .menu {
+  transform: scale(1);
+}
+
+.settings .menu li {
+  height: 25px;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 17px 15px;
+  background-color: transparent;
+}
+
+.menu li span {
+  padding-right: 8px;
+}
+
+.menu li:hover {
+  background-color: var(--primary-colorOp);
+}
+
+.popup-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 222;
+}
+
+.popup-box .popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 400px;
+  width: 100%;
+}
+
+.popup .content {
+  background-color: var(--secondary-color);
+  border-radius: 5px;
+}
+
+.popup .content header {
+  border-bottom: 1px solid var(--primary-color);
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 25px;
+}
+
+.popup .content header p {
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.popup .content header span {
+  font-size: 23px;
+  cursor: pointer;
+  color: var(--primary-color);
+  transition: 0.1s;
+}
+.popup .content header span:hover {
+  transform: scale(1.2);
+}
+
+.content form {
+  margin: 15px 25px 35px;
+}
+
+.content form :where(input, textarea) {
+  width: 100%;
+  height: 50px;
+  outline: none;
+  font-size: 17px;
+  border-radius: 4px;
+  border: 1px solid var(--primary-color);
+  padding: 0 15px;
+  background-color: var(--color3);
+  transition: 0.2s;
+}
+.content form :where(input, textarea):focus {
+  background-color: white;
+  transform: scale(1.05);
+}
+
+form .row label {
+  margin-bottom: 6px;
+  font-size: 18px;
+  display: block;
+}
+.content form textarea {
+  height: 150px;
+  resize: none;
+  padding: 8px 15px;
+}
+
+.content form button {
+  background-color: var(--primary-color);
+  height: 50px;
+  width: 100%;
+  margin: 15px 0;
+  border: none;
+  font-size: 17px;
+  cursor: pointer;
+  border-radius: 4px;
+  color: var(--color3);
+}
+.content form button:hover {
+  background-color: #15254a;
+}
+
+.popup-box,
+.popup-box.popup {
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s ease;
+}
+
+.popup-box.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.hide-icon {
+  display: none;
+}
+.notePopup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-colorDar);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+  transform: scale(0);
+}
+.notePopup.show {
+  transform: scale(1);
+}
+.notePopup .box {
+  max-width: 500px;
+  max-height: 500px;
+  height: 50%;
+  width: 60%;
+  border-radius: 10px;
+  background-color: var(--color3);
+  color: var(--primary-color);
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+.notePopup .box * {
+  padding: 10px;
+}
+.notePopup .box .closeBox {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 27px;
+  cursor: pointer;
+}
